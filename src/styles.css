@@ -1,0 +1,16 @@
+/* styles.css */
+body {
+    background-color: #fff7e2;
+  }
+  
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.button-container {
+  display: flex;
+  gap:5px;
+  border: none;
+}
