@@ -1,16 +1,17 @@
 import cutleryIcon from "./icons/cutlery_6956481.png";
+import loadMenuPage from "./menu.js"; // Import the menu module
 
 function loadHomePage() {
     const content = document.getElementById("content");
     content.innerHTML = ''; 
-
-    // Create header
-    const header = document.createElement("header");
-
-    // Create nav
-    const nav = document.createElement("nav");
+    
+    // Reference existing header and navigation elements
+    const nav = document.querySelector("nav");
     nav.classList.add("main-nav");
-
+    
+    // Clear existing nav contents
+    nav.innerHTML = '';
+    
     // Create logo container with icon
     const logoContainer = document.createElement("div");
     logoContainer.classList.add("logo-container");
@@ -21,16 +22,32 @@ function loadHomePage() {
     icon.classList.add("logo-icon");
     
     logoContainer.appendChild(icon);
-
-    // Create navigation links
+    
+    // Create navigation links (replacing the buttons)
     const navLinks = document.createElement("div");
     navLinks.classList.add("nav-links");
     
-    const links = ["Home", "About", "Menu", "Contact"];
+    const links = ["Home", "Menu", "About", "Contact"];
     links.forEach(text => {
-        const link = document.createElement("a");
+        const link = document.createElement("button"); // Using button as in your HTML
         link.textContent = text;
-        link.href = "#"; // Placeholder link
+        link.classList.add("nav-button");
+        
+        // Add event listeners for each navigation button
+        link.addEventListener("click", function(e) {
+            e.preventDefault();
+            
+            if (text === "Home") {
+                loadHomePage();
+            } else if (text === "Menu") {
+                loadMenuPage();
+            } else if (text === "About") {
+                console.log("About page clicked");
+            } else if (text === "Contact") {
+                console.log("Contact page clicked");
+            }
+        });
+        
         navLinks.appendChild(link);
     });
 
@@ -49,9 +66,6 @@ function loadHomePage() {
     nav.appendChild(logoContainer);
     nav.appendChild(navLinks);
     nav.appendChild(searchBar);
-    
-    header.appendChild(nav);
-    content.appendChild(header);
 
     // Create main content section
     const mainSection = document.createElement("main");
@@ -70,7 +84,7 @@ function loadHomePage() {
     menuText.textContent = "RUSH";
     menuText.classList.add("menu-text");
     
-    // Add lorem ipsum paragraph
+    // Add paragraph
     const paragraph = document.createElement("p");
     paragraph.textContent = "At BiteRush, we serve up bold flavors, sizzling hot meals, and fast service that keeps you coming back for more! Whether you're craving juicy burgers, crispy fries, or delicious wraps, we bring the perfect bite—fast and fresh.";
     paragraph.classList.add("description");
@@ -177,11 +191,10 @@ function loadHomePage() {
     // Add main section to content
     content.appendChild(mainSection);
 
-    // Footer
-    const footer = document.createElement("footer");
+    // Update the footer text
+    const footer = document.querySelector("footer");
     footer.classList.add("footer");
     footer.textContent = "© 2025 Special Menu Restaurant   ||   Made by Samama Karim";
-    content.appendChild(footer);
 }
 
 export default loadHomePage;

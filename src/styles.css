@@ -23,7 +23,7 @@ body {
 /* Navigation styles */
 .main-nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 10px 0;
 }
@@ -43,16 +43,19 @@ body {
   gap: 30px;
 }
 
-.nav-links a {
+.nav-links button {
   text-decoration: none;
   color: #333;
   font-weight: 500;
   font-size: 16px;
   padding: 5px 0;
   position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-.nav-links a:hover::after {
+.nav-links button:hover::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -246,5 +249,172 @@ body {
   .info-container {
     position: relative;
     max-width: 100%;
+  }
+}
+
+/* Menu CSS */
+
+/* Menu Page Styles */
+.menu-page {
+  flex-direction: column;
+  height: auto !important;
+  position: static;
+  margin-bottom: 50px;
+}
+
+.menu-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #4a2511;
+  margin: 30px 0;
+}
+
+.menu-categories {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.category-tab {
+  padding: 8px 20px;
+  background: none;
+  border: 2px solid #ff5a5f;
+  border-radius: 25px;
+  color: #ff5a5f;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-tab.active,
+.category-tab:hover {
+  background-color: #ff5a5f;
+  color: white;
+}
+
+.menu-items-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  width: 100%;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+}
+
+.item-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Placeholder backgrounds for different menu items */
+.burger-img {
+  background-color: #ffcb8e;
+}
+
+.double-burger-img {
+  background-color: #ffb570;
+}
+
+.veggie-burger-img {
+  background-color: #b5e8b5;
+}
+
+.chicken-wrap-img {
+  background-color: #e8d1b5;
+}
+
+.beef-wrap-img {
+  background-color: #e8b5b5;
+}
+
+.fries-img {
+  background-color: #ffe0b5;
+}
+
+.onion-rings-img {
+  background-color: #e8e8b5;
+}
+
+.soda-img {
+  background-color: #b5e8e8;
+}
+
+.milkshake-img {
+  background-color: #e8b5e8;
+}
+
+.item-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.item-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #4a2511;
+}
+
+.item-price {
+  font-weight: 600;
+  color: #ff5a5f;
+}
+
+.item-description {
+  color: #666;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.add-to-cart-btn {
+  background-color: #ff9a3c;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-end;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #ff8623;
+}
+
+@media (max-width: 768px) {
+  .category-tabs {
+    flex-wrap: wrap;
+  }
+  
+  .menu-items-container {
+    grid-template-columns: 1fr;
   }
 }
