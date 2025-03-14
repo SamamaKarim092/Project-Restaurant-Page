@@ -1,10 +1,20 @@
 import cutleryIcon from "./icons/cutlery_6956481.png";
 import loadHomePage from "./home.js"; // Import the home module
+import loadAboutPage from "./about.js";
+import loadContactPage from "./contact.js";
+
+import burgerAnimation from "./icons/burger.mp4"; 
+import doubleDeckerBurger from "./icons/double decker.mp4"; 
+import softDrinks from "./icons/soft drinks.mp4"; 
+import vegeBurger from "./icons/vege burger.mp4";    
+import chickenRoll from "./icons/chicken roll.mp4";    
+import beefRoll from "./icons/beef roll.mp4";    
+import fries from "./icons/fries.mp4";    
+import onionRings from "./icons/onion rings.mp4";    
+import milkshake from "./icons/milkshake.mp4";    
+
 
 function loadMenuPage() {
-
-    //////  Same code from here to ////////
-
     const content = document.getElementById("content");
     content.innerHTML = ''; 
     
@@ -46,9 +56,9 @@ function loadMenuPage() {
             } else if (text === "Menu") {
                 loadMenuPage();
             } else if (text === "About") {
-                console.log("About page clicked");
+                loadAboutPage();
             } else if (text === "Contact") {
-                console.log("Contact page clicked");
+                loadContactPage();
             }
         });
         
@@ -70,10 +80,7 @@ function loadMenuPage() {
     nav.appendChild(logoContainer);
     nav.appendChild(navLinks);
     nav.appendChild(searchBar);
-
-    //////  to here  ////////
     
-
     // Create main content section
     const mainSection = document.createElement("main");
     mainSection.classList.add("main-content", "menu-page");
@@ -137,70 +144,79 @@ function loadMenuPage() {
     const menuItemsContainer = document.createElement("div");
     menuItemsContainer.classList.add("menu-items-container");
     
-    // Menu items data
+    // Menu items data with animations for all items
     const menuItems = [
         {
             name: "Classic Burger",
             price: "$8.99",
             description: "Juicy beef patty with lettuce, tomato, cheese, and our special sauce.",
             category: "Burgers",
-            imageClass: "burger-img"
+            imageClass: "burger-img",
+            animation: burgerAnimation
         },
         {
             name: "Double Decker",
             price: "$12.99",
             description: "Two beef patties with bacon, cheese, and all the fixings.",
             category: "Burgers",
-            imageClass: "double-burger-img"
+            imageClass: "double-burger-img",
+            animation: doubleDeckerBurger
         },
         {
             name: "Veggie Burger",
             price: "$9.99",
             description: "Plant-based patty with fresh vegetables and vegan sauce.",
             category: "Burgers",
-            imageClass: "veggie-burger-img"
+            imageClass: "veggie-burger-img",
+            animation: vegeBurger
         },
         {
             name: "Chicken Wrap",
             price: "$7.99",
             description: "Grilled chicken with lettuce, tomato, and ranch dressing.",
             category: "Wraps",
-            imageClass: "chicken-wrap-img"
+            imageClass: "chicken-wrap-img",
+            animation: chickenRoll
         },
         {
             name: "Spicy Beef Wrap",
             price: "$8.49",
             description: "Seasoned beef with jalapeños and spicy mayo.",
             category: "Wraps",
-            imageClass: "beef-wrap-img"
+            imageClass: "beef-wrap-img",
+            animation: beefRoll
         },
         {
             name: "French Fries",
             price: "$3.99",
             description: "Crispy golden fries with our signature seasoning.",
             category: "Sides",
-            imageClass: "fries-img"
+            imageClass: "fries-img",
+            animation: fries
         },
         {
             name: "Onion Rings",
             price: "$4.49",
             description: "Crispy battered onion rings served with dipping sauce.",
             category: "Sides",
-            imageClass: "onion-rings-img"
+            imageClass: "onion-rings-img",
+            animation: onionRings
         },
         {
             name: "Soft Drink",
             price: "$2.49",
             description: "Your choice of soda or lemonade.",
             category: "Drinks",
-            imageClass: "soda-img"
+            imageClass: "soda-img",
+            animation: softDrinks
         },
         {
             name: "Milkshake",
             price: "$4.99",
             description: "Thick and creamy shake in vanilla, chocolate, or strawberry.",
             category: "Drinks",
-            imageClass: "milkshake-img"
+            imageClass: "milkshake-img",
+            animation: milkshake
         }
     ];
     
@@ -210,9 +226,32 @@ function loadMenuPage() {
         menuItem.classList.add("menu-item");
         menuItem.dataset.category = item.category;
         
-        // Create item image
-        const itemImage = document.createElement("div");
-        itemImage.classList.add("item-image", item.imageClass);
+        // Create video element for all items that have animations
+        if (item.animation) {
+            const itemVideo = document.createElement("video");
+            itemVideo.classList.add("item-image", item.imageClass);
+            itemVideo.src = item.animation;
+            itemVideo.loop = true;
+            itemVideo.muted = true;
+            itemVideo.preload = "auto";
+            
+            // Add event listeners for hover
+            menuItem.addEventListener("mouseenter", () => {
+                itemVideo.play();
+            });
+            
+            menuItem.addEventListener("mouseleave", () => {
+                itemVideo.pause();
+                itemVideo.currentTime = 0; // Reset to first frame when not hovering
+            });
+            
+            menuItem.appendChild(itemVideo);
+        } else {
+            // Fallback for items without animation (shouldn't happen with current setup)
+            const itemImage = document.createElement("div");
+            itemImage.classList.add("item-image", item.imageClass);
+            menuItem.appendChild(itemImage);
+        }
         
         // Create item info
         const itemInfo = document.createElement("div");
@@ -253,8 +292,7 @@ function loadMenuPage() {
         itemInfo.appendChild(itemDescription);
         itemInfo.appendChild(addToCartBtn);
         
-        // Assemble menu item
-        menuItem.appendChild(itemImage);
+        // Assemble menu item - make sure the video is before the info for proper layout
         menuItem.appendChild(itemInfo);
         
         // Add menu item to container

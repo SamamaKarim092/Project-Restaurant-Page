@@ -418,3 +418,77 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* about.js */
+
+.about-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.about-heading {
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.about-paragraph {
+  max-width: 800px;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 1.8;
+  font-size: 1.2rem;
+  padding: 1.5rem;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Css */
+
+.contact-page {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 43px;
+}
+
+.contact-heading {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.contact-item {
+  background: #f8f8f8;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.contact-name {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.contact-role {
+  font-size: 1rem;
+  color: #777;
+}
+
+.contact-phone {
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: bold;
+}

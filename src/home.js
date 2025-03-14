@@ -1,5 +1,7 @@
 import cutleryIcon from "./icons/cutlery_6956481.png";
 import loadMenuPage from "./menu.js"; // Import the menu module
+import loadAboutPage from './about.js';
+import loadContactPage from "./contact.js";
 
 function loadHomePage() {
     const content = document.getElementById("content");
@@ -42,9 +44,9 @@ function loadHomePage() {
             } else if (text === "Menu") {
                 loadMenuPage();
             } else if (text === "About") {
-                console.log("About page clicked");
+                loadAboutPage();
             } else if (text === "Contact") {
-                console.log("Contact page clicked");
+                loadContactPage();
             }
         });
         
