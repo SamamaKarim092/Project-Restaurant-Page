@@ -13,4 +13,5 @@ This project was built entirely using DOM manipulation without relying on extern
 
 ![image](https://github.com/user-attachments/assets/b3c99a8d-3fd8-4dd1-83ba-971d8245b248)
 
-if you want to check the website by yourself here is the link Project Restaurant Page [https://samamakarim092.github.io/Project-Restaurant-Page/]
+if you want to check the website by yourself here is the link
+[Project Restaurant Page](https://samamakarim092.github.io/Project-Restaurant-Page/)
