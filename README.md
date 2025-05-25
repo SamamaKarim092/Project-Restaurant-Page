@@ -11,7 +11,7 @@ This project was built entirely using DOM manipulation without relying on extern
 
 ### Here is the picture of what I made
 
-![image](![image](https://github.com/user-attachments/assets/665ba27f-516b-4f38-8968-d2135bfb02f0))
+![image](https://github.com/user-attachments/assets/b3c99a8d-3fd8-4dd1-83ba-971d8245b248)
 
 if you want to check the website by yourself here is the link
-[Project Restaurant Page](https://samamakarim092.github.io/Project-Todo-List-1/)
+[Project Restaurant Page](https://samamakarim092.github.io/Project-Restaurant-Page/)
